@@ -18,26 +18,22 @@ fn main() {
     let mut s = String::new();
 
     match file.read_to_string(&mut s) {
-        Err(why) => panic!("couldn't read {}", why.description()),
-        Ok(_) => print!("{} contains:\n", s),
+        Err(why) => panic!("couldn't read due to: {}", why.description()),
+        Ok(_) => print!("contains: {}\n", s),
     }
 
     let path_to_write = Path::new("hello.txt");
 
     // Open a file in write-only mode, returns `io::Result<File>`
     let mut file = match File::create(&path_to_write) {
-        Err(why) => panic!("couldn't create {}", why.description()),
+        Err(why) => panic!("couldn't create due to: {}", why.description()),
         Ok(file) => file,
     };
 
     match file.write_all(&s.as_bytes()) {
         Err(why) => {
-            panic!("couldn't write to {}", why.description())
+            panic!("couldn't write due to: {}", why.description())
         },
         Ok(_) => println!("successfully wrote"),
     }
-
-
-
-
 }
