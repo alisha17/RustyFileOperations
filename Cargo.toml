@@ -1,0 +1,6 @@
+[package]
+name = "fileoperations"
+version = "0.1.0"
+authors = ["alisha <anejaalisha@yahoo.com>"]
+
+[dependencies]
